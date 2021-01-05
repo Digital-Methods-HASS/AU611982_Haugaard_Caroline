@@ -1,0 +1,52 @@
+---
+title: "Ungdomsoprøret in 1968"
+author: "Caroline Haugaard"
+date: "11/27/2020"
+output:
+  word_document: default
+  html_document: default
+---
+# Loading packages
+#something about packages and what tidyverse does
+```{r}
+library(tidyverse)
+```
+
+# Loading data
+#something about data and where it comes from - KB labs smurf
+```{r}
+Ungdomsoprøret <- read_csv("Data/smurf-2020-11-27_13_01.csv", skip = 2)
+```
+
+# Analysis
+#calculation of relative frequencies
+```{r}
+Ungdomsoprøret %>% 
+  mutate(ungdomsoprør_freq = ungdomsoprør / total_articles) %>% 
+  mutate(kvindebevægelse_freq = kvindebevægelse / total_articles) -> Ungdomsoprøret
+```
+
+# Visualisation
+#Metatext about visualisation
+```{r}
+Ungdomsoprøret %>% 
+  slice(211:251) %>% 
+  ggplot() +
+  geom_line(mapping = aes(x = year, y = ungdomsoprør_freq)) +
+  labs(x = "years: 1960-2000",
+       y = "Ungdomsoprøret",
+       title = "Count of the word, Ungdomsoprør, found in danish newspapers")
+```
+
+# Visualitation 2
+#Metatext about what to visualise in this part
+```{r}
+Ungdomsoprøret %>% 
+  slice(211:251) %>% 
+  ggplot() +
+  geom_line(mapping = aes(x = year, y = kvindebevægelse_freq)) +
+  labs(x = "year: 1960-2000",
+       y = "Kvindebevægelse",
+       title = "Count of the word, Kvindebevægelse, found in danish newspapers")
+```
+
