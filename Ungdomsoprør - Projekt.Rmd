@@ -7,19 +7,19 @@ output:
   html_document: default
 ---
 # Loading packages
-#something about packages and what tidyverse does
+#Packages and what tidyverse does
 ```{r}
 library(tidyverse)
 ```
 
 # Loading data
-#something about data and where it comes from - KB labs smurf
+#Data and where it comes from 
 ```{r}
 Ungdomsoprøret <- read_csv("Data/smurf-2020-11-27_13_01.csv", skip = 2)
 ```
 
 # Analysis
-#calculation of relative frequencies
+#Calculation of relative frequencies
 ```{r}
 Ungdomsoprøret %>% 
   mutate(ungdomsoprør_freq = ungdomsoprør / total_articles) %>% 
